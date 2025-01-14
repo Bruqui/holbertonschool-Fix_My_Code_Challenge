@@ -14,11 +14,16 @@ if (process.argv.length <= 2) {
     process.exit(1)
 }
 
-size = parseInt(process.argv[2], 16)
+// Parse the argument as a base 10 integer
+const size = parseInt(process.argv[2], 10);
 
-for (let i = 0 ; i < size ; i ++) {
-    for (let j = 0 ; j < size ; j ++) {
-        process.stdout.write("#");
-    }
-    process.stdout.write("\n");
+// Validate if the size is a valid number
+if (isNaN(size) || size <= 0) {
+    process.stderr.write("Size must be a positive integer\n");
+    process.exit(1);
+}
+
+// Print the square
+for (let i = 0; i < size; i++) {
+    console.log("#".repeat(size));
 }
